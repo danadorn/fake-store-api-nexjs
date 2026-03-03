@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/dorndana/Documents/TypeScript/next.js-testing/app/dashboard/%40modal/default.tsx"],"sourcesContent":["export default function DefaultPage() {\n   return null\n}"],"names":[],"mappings":";;;;AAAe,SAAS;IACrB,OAAO;AACV"}}]
+}
