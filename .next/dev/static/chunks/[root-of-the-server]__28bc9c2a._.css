@@ -525,10 +525,6 @@
     container: field-group / inline-size;
   }
 
-  .\@container {
-    container-type: inline-size;
-  }
-
   .pointer-events-none {
     pointer-events: none;
   }

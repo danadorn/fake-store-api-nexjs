@@ -2,5 +2,5 @@
   "version": 3,
   "sources": [],
   "sections": [
-    {"offset": {"line": 34, "column": 0}, "map": {"version":3,"sources":["file:///home/dorndana/Documents/TypeScript/next.js-testing/app/dashboard/%40users/page.tsx"],"sourcesContent":["export default function UsersPage(){\n    return(\n        <>\n            <h1>Users Page</h1>\n        </>\n    )\n}"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACpB,qBACI;kBACI,cAAA,8OAAC;sBAAG;;;;;;;AAGhB"}}]
+    {"offset": {"line": 34, "column": 0}, "map": {"version":3,"sources":["file:///home/dorndana/Documents/frontend/TypeScript/next.js-testing/app/dashboard/%40users/page.tsx"],"sourcesContent":["export default function UsersPage(){\n    return(\n        <>\n            <h1>Users Page</h1>\n        </>\n    )\n}"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACpB,qBACI;kBACI,cAAA,8OAAC;sBAAG;;;;;;;AAGhB"}}]
 }

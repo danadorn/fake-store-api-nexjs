@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///home/dorndana/Documents/TypeScript/next.js-testing/components/form/loginForm.tsx"],"sourcesContent":["import LoginForm from \"./loginForm\";\nexport default function ILoginForm() {\n    return(\n        <>\n        <main>\n            <div>\n                <LoginForm />\n            </div>\n        </main>\n        </>\n    )\n}"],"names":[],"mappings":";;;;;AAAA;;;AACe,SAAS;IACpB,qBACI;kBACA,cAAA,8OAAC;sBACG,cAAA,8OAAC;0BACG,cAAA,8OAAC,2IAAS;;;;;;;;;;;;;;;;AAK1B"}},
-    {"offset": {"line": 51, "column": 0}, "map": {"version":3,"sources":["file:///home/dorndana/Documents/TypeScript/next.js-testing/app/%28auth%29/login/page.tsx"],"sourcesContent":["import LoginForm from \"@/components/form/loginForm\";\nimport ILoginForm from \"@/components/form/loginForm\";\n\nexport default function LoginPage(){\n    return(\n        <>\n           <LoginForm />\n        </>\n    )\n}"],"names":[],"mappings":";;;;;AAAA;;;AAGe,SAAS;IACpB,qBACI;kBACG,cAAA,8OAAC,2IAAS;;;;;;AAGrB"}}]
-}

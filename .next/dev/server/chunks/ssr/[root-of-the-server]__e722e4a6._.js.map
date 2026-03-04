@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///home/dorndana/Documents/TypeScript/next.js-testing/app/%28auth%29/register/page.tsx"],"sourcesContent":["import { BugReportForm } from \"@/components/form/bugForm\";\nexport default function RegisterForm() {\n    return( \n        <div>\n\n        </div>    \n        \n    )\n}"],"names":[],"mappings":";;;;;;AACe,SAAS;IACpB,qBACI,8OAAC;;;;;AAKT"}}]
-}

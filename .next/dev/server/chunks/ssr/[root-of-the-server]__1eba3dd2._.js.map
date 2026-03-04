@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///home/dorndana/Documents/TypeScript/next.js-testing/lib/data/product.tsx"],"sourcesContent":["const baseAPI = process.env.NEXT_PUBLIC_API\n\nexport async function fetchAllProducts() {\n    const data = await fetch(`${baseAPI}/api/v1/products`, {\n        method: \"GET\",\n        headers:\n        {\n            \"Content-Type\": \"application/json\"\n        }\n    })\n    const response = await data.json()\n    return response;\n}"],"names":[],"mappings":";;;;AAAA,MAAM,UAAU,QAAQ,GAAG,CAAC,eAAe;AAEpC,eAAe;IAClB,MAAM,OAAO,MAAM,MAAM,GAAG,QAAQ,gBAAgB,CAAC,EAAE;QACnD,QAAQ;QACR,SACA;YACI,gBAAgB;QACpB;IACJ;IACA,MAAM,WAAW,MAAM,KAAK,IAAI;IAChC,OAAO;AACX"}}]
-}

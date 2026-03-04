@@ -9,7 +9,7 @@ export type ProductResponse = {
 };
 
 export type ProductRequest = {
-  tittle: string;
+  title: string;
   price: number;
   description: string;
   categoryId: number;

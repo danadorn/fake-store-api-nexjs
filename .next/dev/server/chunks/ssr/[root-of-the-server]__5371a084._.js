@@ -56,7 +56,9 @@ __turbopack_context__.s([
     "InsertProduct",
     ()=>InsertProduct,
     "default",
-    ()=>getProducts
+    ()=>getProducts,
+    "uploadProduct",
+    ()=>uploadProduct
 ]);
 const baseAPI = ("TURBOPACK compile-time value", "https://api.escuelajs.co");
 async function getProducts() {
@@ -70,13 +72,28 @@ async function getProducts() {
     return data;
 }
 async function InsertProduct(product) {
-    const res = await fetch(`${baseAPI}/api/v1/products`, {
+    const res = await axios(`https://api.escuelajs.co/api/v1/products`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(product)
     });
+    const data = await res.json();
+    return data;
+}
+async function uploadProduct(product) {
+    const res = await fetch(`${baseAPI}/api/v1/products/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(product)
+    });
+    if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`Create product failed (${res.status}): ${text}`);
+    }
     const data = await res.json();
     return data;
 }
