@@ -1,12 +1,11 @@
 import ProductForm from "@/components/form/product-form"
-import Link from "next/link"
-export default function Page() {
+import { getCategories } from "@/lib/data/categories";
+export default async function Page(){
+    const categories = await getCategories();
     return (
         <>
             <main>
-                <h1>Dashboard</h1>
-                <Link href={"/photos/1"}>View Photos</Link>
-                <ProductForm />
+                <ProductForm categories={categories} />
             </main>
         </>
     )

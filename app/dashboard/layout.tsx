@@ -13,12 +13,14 @@ import {
     SidebarProvider,
     SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { Suspense } from "react";
+import { ToastContainer } from "react-toastify";
+import ProductFormLoading from "../users/productFormLoading";
 export default function DashboardLayout(
     { children, analytics, users, modal }: { children: React.ReactNode; analytics: React.ReactNode; users: React.ReactNode; modal: React.ReactNode }
 ) {
     return (
         <>
-
             <SidebarProvider>
                 <AppSidebar />
                 <SidebarInset>
@@ -42,10 +44,16 @@ export default function DashboardLayout(
                         </div>
                     </header>
                     <div className="flex flex-1 flex-col gap-4 p-4">
+                    <Suspense fallback={<ProductFormLoading />}>
                         {children}
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={3000}
+                        />
+                    </Suspense>
                         {analytics}
                         {users}
-                        {modal }
+                        {modal}
                         <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
                     </div>
                 </SidebarInset>

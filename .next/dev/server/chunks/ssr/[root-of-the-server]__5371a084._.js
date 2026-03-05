@@ -72,15 +72,24 @@ async function getProducts() {
     return data;
 }
 async function InsertProduct(product) {
-    const res = await axios(`https://api.escuelajs.co/api/v1/products`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(product)
-    });
-    const data = await res.json();
-    return data;
+    try {
+        const response = await fetch(`${baseAPI}/api/v1/products`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(product)
+        });
+        if (!response.ok) {
+            const error = await response.text();
+            throw new Error(`Failed to insert product: ${response.status} - ${error}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error inserting product:", error);
+        throw error;
+    }
 }
 async function uploadProduct(product) {
     const res = await fetch(`${baseAPI}/api/v1/products/`, {

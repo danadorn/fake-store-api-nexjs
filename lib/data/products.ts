@@ -1,3 +1,4 @@
+import { error } from "console";
 import { ProductRequest } from "../type/productResponse";
 import axios from "axios";
 
@@ -15,15 +16,26 @@ export default async function getProducts() {
 }
 
 export async function InsertProduct(product: ProductRequest) {
-  const res = await axios(`https://api.escuelajs.co/api/v1/products`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    data: JSON.stringify(product),
-  });
-  // const data = await res.json();
-  return res;
+  try {
+        const response = await fetch(`${baseAPI}/api/v1/products`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(product),
+        });
+
+        if (!response.ok) {
+            const error = await response.text();
+            throw new Error(`Failed to insert product: ${response.status} - ${error}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error inserting product:", error);
+        throw error;
+    }
 }
 
 export type CreateProduct = {

@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import {
   Field,
   FieldLabel,
@@ -17,17 +18,26 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { InsertProduct, uploadProduct } from "@/lib/data/products";
+import { ImageUpload } from "@/lib/data/imageUpload";
+import { toast } from "sonner";
+import { InsertProduct } from "@/lib/data/products";
 
-export default function ProductForm() {
+export default function ProductForm({
+  categories = [],
+}: {
+  categories: { id: number; name: string }[];
+}) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+
   const formSchema = z.object({
-    title: z.string().min(1, { message: "This field is required" }),
-    price: z.coerce.number().optional(),
-    description: z.string().min(1, { message: "This field is required" }),
-    categoryId: z.string(),
-    images: z.any().optional(),
-    // submit: z.string().optional(),
-    // reset: z.string().optional(),
+    title: z.string().min(1, "This field is required"),
+    price: z.coerce.number().min(1, "This field is required"),
+    description: z.string().min(1, "This field is required"),
+    category: z.string().min(1, "Please choose a category"),
+    images: z
+      .any()
+      .refine((files) => files?.length > 0, "Please insert image here"),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -36,220 +46,211 @@ export default function ProductForm() {
       title: "",
       price: 0,
       description: "",
-      categoryId: "",
+      category: "",
       images: undefined,
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // console.log(values);
-    const mockProduct = {
-      title: "a new productd",
-      price: 7822,
-      description: "A descrissavpdsassss1dbcdfffbssssstmmmion",
-      categoryId: 39,
-      images: [
-        "https://api.escuelajs.co/api/v1/files/4c55.png"
-      ]
+    try {
+      setIsLoading(true);
+
+      const imageFormData = new FormData();
+      imageFormData.append("file", values.images[0]);
+
+      const uploadProduct = await ImageUpload(imageFormData);
+
+      const productData = {
+        title: values.title,
+        price: values.price,
+        description: values.description,
+        categoryId: Number(values.category),
+        images: [uploadProduct.location],
+      };
+
+      const data = await InsertProduct(productData);
+      console.log(data);
+      toast.success("Upload New Product Successfully.");
+      form.reset();
+    } catch (error) {
+      toast.error("Failed to upload new product! Please try again.");
+    } finally {
+      setIsLoading(false);
+      setUploadProgress(0);
     }
-    const res = await InsertProduct(mockProduct)
-    console.log("After upload product", res);
-    const data = await res;
-    console.log("After upload product", data);
-  // Insert Product 
-  // const res = await InsertProduct(mockProduct)
-  //   console.log("After insert product",res);
+  }
 
-}
+  function onReset() {
+    form.reset();
+    form.clearErrors();
+  }
 
-function onReset() {
-  form.reset();
-  form.clearErrors();
-}
+  return (
+    <div className="mx-auto max-w-xl w-full">
+      {/* Form Header */}
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold text-foreground">New Product</h2>
+        <p className="text-sm text-muted-foreground mt-1">
+          Fill in the details below to add a new product.
+        </p>
+      </div>
 
-return (
-  <form
-    onSubmit={form.handleSubmit(onSubmit)}
-    onReset={onReset}
-    className="space-y-8 "
-  >
-    <div className="grid grid-cols-12 gap-4">
-      <Controller
-        control={form.control}
-        name="title"
-        render={({ field, fieldState }) => (
-          <Field
-            className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
-            data-invalid={fieldState.invalid}
-          >
-            <FieldLabel className="flex w-auto!">Product Title</FieldLabel>
+      {/* Form Card */}
+      <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          onReset={onReset}
+          className="flex flex-col gap-5"
+        >
+          {/* title */}
+          <Controller
+            control={form.control}
+            name="title"
+            render={({ field, fieldState }) => (
+              <Field className="flex flex-col gap-1.5">
+                <FieldLabel className="text-sm font-medium text-foreground">
+                  Product Name
+                </FieldLabel>
+                <Input
+                  placeholder="Macbook Pro 16"
+                  {...field}
+                  value={field.value ?? ""}
+                  className="h-10 rounded-lg border-border bg-background text-sm"
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
 
-            <Input
-              key="text-input-0"
-              placeholder="Macbook pro"
-              type="text"
-              className=""
-              {...field}
-            />
+          {/* price */}
+          <Controller
+            control={form.control}
+            name="price"
+            render={({ field, fieldState }) => (
+              <Field className="flex flex-col gap-1.5">
+                <FieldLabel className="text-sm font-medium text-foreground">
+                  Price <span className="text-muted-foreground font-normal">(USD)</span>
+                </FieldLabel>
+                <Input
+                  type="number"
+                  placeholder="0"
+                  {...field}
+                  value={field.value ?? 0}
+                  className="h-10 rounded-lg border-border bg-background text-sm"
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
 
-            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-          </Field>
-        )}
-      />
-      <Controller
-        control={form.control}
-        name="price"
-        render={({ field, fieldState }) => (
-          <Field
-            className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
-            data-invalid={fieldState.invalid}
-          >
-            <FieldLabel className="flex w-auto!">Price</FieldLabel>
+          {/* description */}
+          <Controller
+            control={form.control}
+            name="description"
+            render={({ field, fieldState }) => (
+              <Field className="flex flex-col gap-1.5">
+                <FieldLabel className="text-sm font-medium text-foreground">
+                  Description
+                </FieldLabel>
+                <Textarea
+                  {...field}
+                  value={field.value ?? ""}
+                  placeholder="Describe your product..."
+                  className="min-h-[100px] rounded-lg border-border bg-background text-sm resize-none"
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
 
-            <Input
-              key="number-input-0"
-              placeholder="200 USD"
-              type="number"
-              className=""
-              {...field}
-            />
+          {/* category */}
+          <Controller
+            control={form.control}
+            name="category"
+            render={({ field, fieldState }) => (
+              <Field className="flex flex-col gap-1.5">
+                <FieldLabel className="text-sm font-medium text-foreground">
+                  Category
+                </FieldLabel>
+                <Select
+                  value={field.value ?? ""}
+                  onValueChange={(val) => field.onChange(val)}
+                >
+                  <SelectTrigger className="h-10 rounded-lg border-border bg-background text-sm">
+                    <SelectValue placeholder="Select a category" />
+                  </SelectTrigger>
+                  <SelectContent position="popper" className="z-50">
+                    {(categories ?? []).map((c) => (
+                      <SelectItem key={c.id} value={c.id.toString()}>
+                        {c.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
 
-            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-          </Field>
-        )}
-      />
-      <Controller
-        control={form.control}
-        name="description"
-        render={({ field, fieldState }) => (
-          <Field
-            className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
-            data-invalid={fieldState.invalid}
-          >
-            <FieldLabel className="flex w-auto!">
-              Product Description
-            </FieldLabel>
+          {/* image */}
+          <Controller
+            control={form.control}
+            name="images"
+            render={({ field, fieldState }) => (
+              <Field className="flex flex-col gap-1.5">
+                <FieldLabel className="text-sm font-medium text-foreground">
+                  Product Image
+                </FieldLabel>
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => field.onChange(e.target.files)}
+                  className="h-10 rounded-lg border-border bg-background text-sm
+                    file:mr-3 file:border-0 file:bg-muted file:text-muted-foreground
+                    file:text-xs file:font-medium file:rounded-md file:px-3 file:py-1
+                    cursor-pointer"
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
 
-            <Textarea
-              key="textarea-0"
-              id="description"
-              placeholder="Product description here..."
-              className=""
-              {...field}
-            />
+          {/* divider */}
+          <div className="border-t border-border my-1" />
 
-
-            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-          </Field>
-        )}
-      />
-      <Controller
-        control={form.control}
-        name="categoryId"
-        render={({ field, fieldState }) => (
-          <Field
-            className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
-            data-invalid={fieldState.invalid}
-          >
-            <FieldLabel className="flex w-auto!">Category</FieldLabel>
-
-            <Select
-              key="select-0"
-              value={field.value}
-              name={field.name}
-              onValueChange={field.onChange}
-            >
-              <SelectTrigger className="w-full ">
-                <SelectValue placeholder="Please Choose category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem key="Computer" value="Computer">
-                  Electronic
-                </SelectItem>
-
-                <SelectItem key="Food" value="Food">
-                  Drink
-                </SelectItem>
-              </SelectContent>
-            </Select>
-
-            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-          </Field>
-        )}
-      />
-      <Controller
-        control={form.control}
-        name="images"
-        render={({ field, fieldState }) => (
-          <Field
-            className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
-            data-invalid={fieldState.invalid}
-          >
-            <FieldLabel className="flex w-auto!">Choose Images</FieldLabel>
-
-            <Input
-              key="file-input-0"
-              placeholder=""
-              type="file"
-              className=""
-              {...field}
-            />
-
-            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-          </Field>
-        )}
-      />
-      <Controller
-        control={form.control}
-        name="submit"
-        render={({ field, fieldState }) => (
-          <Field
-            className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
-            data-invalid={fieldState.invalid}
-          >
-            <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
-
+          {/* buttons */}
+          <div className="flex gap-3">
             <Button
-              key="submit-button-0"
-              id="submit"
-              name=""
-              className="w-full"
-              type="submit"
-              variant="default"
-            >
-              Submit
-            </Button>
-
-            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-          </Field>
-        )}
-      />
-      <Controller
-        control={form.control}
-        name="reset"
-        render={({ field, fieldState }) => (
-          <Field
-            className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
-            data-invalid={fieldState.invalid}
-          >
-            <FieldLabel className="hidden w-auto!">Reset</FieldLabel>
-
-            <Button
-              key="reset-button-0"
-              id="reset"
-              name=""
-              className="w-full"
               type="reset"
               variant="outline"
+              disabled={isLoading}
+              className="flex-1 h-10 rounded-lg text-sm font-medium"
             >
               Reset
             </Button>
-
-            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-          </Field>
-        )}
-      />
+            <Button
+              type="submit"
+              variant="default"
+              disabled={isLoading}
+              className="flex-1 h-10 rounded-lg text-sm font-medium"
+            >
+              {isLoading
+                ? `Submitting...`
+                : "Submit"}
+            </Button>
+          </div>
+        </form>
+      </div>
     </div>
-  </form>
-);
+  );
 }

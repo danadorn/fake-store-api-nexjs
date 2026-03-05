@@ -12,6 +12,457 @@ self.__BUILD_MANIFEST = {
         ],
         "source": "/photos/:nxtPid",
         "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
+      },
+      {
+        "has": [
+          {
+            "type": "header",
+            "key": "next-url",
+            "value": "/dashboard(?:/.*)?"
+          }
+        ],
+        "source": "/photos/:nxtPid",
+        "destination": "/dashboard/(..)photos/:nxtPid"
       }
     ],
     "fallback": []
