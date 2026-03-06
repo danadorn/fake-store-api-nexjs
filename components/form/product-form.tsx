@@ -70,10 +70,10 @@ export default function ProductForm({
 
       const data = await InsertProduct(productData);
       console.log(data);
-      toast.success("Upload New Product Successfully.");
+      toast.success("✨ Product updated! We cooked twin 🔥");
       form.reset();
     } catch (error) {
-      toast.error("Failed to upload new product! Please try again.");
+      toast.error("💀 Update failed twin… try again fr");
     } finally {
       setIsLoading(false);
       setUploadProgress(0);
