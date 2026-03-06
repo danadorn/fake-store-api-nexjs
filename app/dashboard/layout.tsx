@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/sidebar"
 import { Suspense } from "react";
 import { ToastContainer } from "react-toastify";
+import { Toaster } from "@/components/ui/sonner";
 import ProductFormLoading from "../users/productFormLoading";
 export default function DashboardLayout(
     { children, analytics, users, modal }: { children: React.ReactNode; analytics: React.ReactNode; users: React.ReactNode; modal: React.ReactNode }
@@ -50,6 +51,7 @@ export default function DashboardLayout(
                             position="top-right"
                             autoClose={3000}
                         />
+                        <Toaster />
                     </Suspense>
                         {analytics}
                         {users}
