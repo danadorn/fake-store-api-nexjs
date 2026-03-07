@@ -1,5 +1,5 @@
 import { CardImage } from "@/components/fs-card/ProduceCard"
-import { ProductRespone } from "@/lib/type/productResponse";
+import { ProductResponse } from "@/lib/type/productResponse";
 import Link from "next/link";
 
 // create function to gey data from api
@@ -8,7 +8,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_API
 async function loadProduct() {
     // const Response = await fetch(``)
     const Response = await fetch(`${BASE_URL}/api/v1/products/`) ;
-    const products: ProductRespone[] = await Response.json();
+    const products: ProductResponse[] = await Response.json();
     console.log(products)
     return products;
 

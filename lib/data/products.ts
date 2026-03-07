@@ -23,6 +23,7 @@ export async function InsertProduct(product: ProductRequest) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(product),
+            
         });
 
         if (!response.ok) {
